@@ -1,0 +1,48 @@
+plugins {
+    id 'java-library'
+    id 'io.qameta.allure' version '2.8.1'
+    id "org.gradle.test-retry" version "1.2.1"
+}
+
+repositories {
+    mavenCentral()
+}
+
+def selenideVersion = "5.20.1",
+    allureVersion = "2.13.8",
+    slf4jVersion = "1.7.29",
+    junitVersion = "5.7.1"
+
+allure {
+    autoconfigure = true
+    version = allureVersion
+    configuration = "testImplementation"
+    aspectjweaver = true
+
+    useJUnit5 {
+        version = allureVersion
+    }
+}
+
+dependencies {
+    testImplementation(
+            "com.codeborne:selenide:$selenideVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "org.slf4j:slf4j-simple:$slf4jVersion",
+            "org.junit.jupiter:junit-jupiter-api:$junitVersion")
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+    test {
+        useJUnitPlatform()
+            retry {
+                maxRetries = 2
+                maxFailures = 20
+                failOnPassedAfterRetry = true
+            }
+        }
