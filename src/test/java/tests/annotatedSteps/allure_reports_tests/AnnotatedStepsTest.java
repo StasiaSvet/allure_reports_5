@@ -12,10 +12,10 @@ public class AnnotatedStepsTest {
     @Test
     @DisplayName("Annotated tests")
     public void testSearch() {
-        annotatedSteps.OpenMainPage();
-        annotatedSteps.SearchForRepository(TestData.repositoryName);
-        annotatedSteps.OpenRepository(TestData.repositoryName);
-        annotatedSteps.OpenIssuesTab();
-        annotatedSteps.SearchForIssueNumber(TestData.issueNumber);
+        annotatedSteps.openMainPage();
+        annotatedSteps.searchForRepository(TestData.repositoryName);
+        annotatedSteps.openRepository(TestData.repositoryName);
+        annotatedSteps.openIssuesTab();
+        annotatedSteps.searchForIssueNumber(TestData.issueNumber);
     }
 }

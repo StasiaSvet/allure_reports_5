@@ -13,7 +13,7 @@ public class SelenideTest extends TestData {
 
     @Test
     @DisplayName("Selenide tests")
-    public void SearchForIssueTab() {
+    public void searchForIssueTab() {
         open("https://github.com/");
         $(byName("q")).setValue(repositoryName).pressEnter();
         $(byLinkText("StessyT/allure_reports_5")).click();

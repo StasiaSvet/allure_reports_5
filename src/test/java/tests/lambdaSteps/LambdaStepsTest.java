@@ -14,7 +14,7 @@ public class LambdaStepsTest extends TestData {
 
     @Test
     @DisplayName("Lambda tests")
-    public void SearchForIssueTab() {
+    public void searchForIssueTab() {
         step("Open the main page", () ->
             open("https://github.com/"));
         step("Search for " + repositoryName + " repository name", () -> {

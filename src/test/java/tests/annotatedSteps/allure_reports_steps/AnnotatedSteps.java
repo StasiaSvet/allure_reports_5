@@ -11,23 +11,23 @@ import static com.codeborne.selenide.Selenide.open;
 public class AnnotatedSteps extends TestData {
 
     @Step ("Open the main page")
-    public void OpenMainPage() {
+    public void openMainPage() {
         open("https://github.com/");
     }
     @Step ("Search for {repositoryName}")
-    public void SearchForRepository(String repositoryName) {
+    public void searchForRepository(String repositoryName) {
         $(byName("q")).setValue(repositoryName).pressEnter();
     }
     @Step ("Open {repositoryName} repository")
-    public void OpenRepository(String repositoryName) {
+    public void openRepository(String repositoryName) {
         $(byLinkText(repositoryName)).click();
     }
     @Step ("Open the Issues tab")
-    public void OpenIssuesTab() {
+    public void openIssuesTab() {
         $(withText("Issues")).click();
     }
     @Step ("Search for Issue {issueNumber}")
-    public void SearchForIssueNumber(int issueNumber) {
+    public void searchForIssueNumber(int issueNumber) {
         $(withText("Issue #" + issueNumber)).should(Condition.exist);
     }
 }
